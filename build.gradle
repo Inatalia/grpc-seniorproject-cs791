@@ -46,15 +46,16 @@ sourceSets {
 dependencies {
   def tomcatVersion = '7.0.57'
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.14'
-      compile 'javax.ws.rs:jsr311-api:1.1.1'    
-      compile 'com.sun.jersey:jersey-server:1.13'
-      compile 'com.sun.jersey:jersey-core:1.13'
-      compile 'com.sun.jersey:jersey-servlet:1.13'
+    compile 'javax.ws.rs:jsr311-api:1.1.1'    
+    compile 'com.sun.jersey:jersey-server:1.13'
+    compile 'com.sun.jersey:jersey-core:1.13'
+    compile 'com.sun.jersey:jersey-servlet:1.13'
+    
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
-             tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
-               exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
-             }
+    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+		exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
 }
 
 // context where tomcat is deployed, by defautl localhost:8080/
