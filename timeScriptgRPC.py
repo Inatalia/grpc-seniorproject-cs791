@@ -2,13 +2,11 @@
 
 import time as t
 import os
-import grpc
+#import grpc
 #import helloworld_pb2
 
 def run():
-  channel = grpc.insecure_channel('localhost:50051')
-  stub = helloworld_pb2.GreeterStub(channel)
-  response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
+  os.system("grpc/example/helloworld/python greeter-client.py >> /dev/null")
 
 times = []
 
