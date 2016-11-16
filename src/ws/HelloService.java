@@ -13,6 +13,7 @@ public class HelloService {
     	return "Hello World!\n";
 
    	}
+
 	@GET
 	@Path("/intextform2")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -20,4 +21,5 @@ public class HelloService {
     	return "Hello World2!\n";
 
    	}
+
 }
