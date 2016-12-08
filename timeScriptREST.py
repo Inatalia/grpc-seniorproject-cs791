@@ -5,7 +5,7 @@ import os
 
 times = []
 
-for n in range( 0 , 9999):
+for n in range( 0 , 9):
   start = t.time()
   os.system("curl -silent localhost:8080/rest/hello/intextform >> /dev/null")
   end = t.time()
