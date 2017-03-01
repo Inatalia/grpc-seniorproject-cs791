@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define NUM 1000
+
+#define MASK_ONE_BYTE   0xFF
+#define MASK_TWO_BYTE   0xFFFF
+#define MASK_THREE_BYTE 0xFFFFFF
+#define MASK_FOUR_BYTE  0xFFFFFFFF
+#define MASK_FIVE_BYTE  0xFFFFFFFFFF
+#define MASK_SIX_BYTE   0xFFFFFFFFFFFF
+#define MASK_SEVEN_BYTE 0xFFFFFFFFFFFFFF
+#define MASK_EIGHT_BYTE 0xFFFFFFFFFFFFFFFF
+
+void generate_random_uint64(uint64_t, char*);
+
+// run the main method
+int main(int argc, char ** argv){
+
+  time_t t; 
+  srand((unsigned) time(&t));
+
+  // generate uint64's
+  generate_random_uint64(MASK_ONE_BYTE, "oneByte.numbers");
+  generate_random_uint64(MASK_TWO_BYTE, "twoByte.numbers");
+  generate_random_uint64(MASK_THREE_BYTE, "threeByte.numbers");
+  generate_random_uint64(MASK_FOUR_BYTE, "fourByte.numbers");
+  generate_random_uint64(MASK_FIVE_BYTE, "fiveByte.numbers");
+  generate_random_uint64(MASK_SIX_BYTE, "sixByte.numbers");
+  generate_random_uint64(MASK_SEVEN_BYTE, "sevenByte.numbers");
+  generate_random_uint64(MASK_EIGHT_BYTE, "eightByte.numbers");
+}
+
+// generate random longs to a file
+void
+generate_random_uint64(uint64_t mask, char * filename){
+  FILE * fp = fopen(filename, "w");
+  uint64_t randy = 0x0;
+  for(int idx = 0; idx < NUM; ++idx){
+    randy = 0x0;
+    randy = rand();
+    randy = randy << 32;
+    randy = (randy | rand()) & mask;
+    fprintf(fp, "%llu\n", randy);
+  }
+  fclose(fp);
+}
