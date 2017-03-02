@@ -5,8 +5,21 @@
 // note if proto2 n would need to be specified as packed
 // proto3 uses packing by default
 
+// [START declaration]
 syntax = "proto3";
+package unh.cs;
+// [END declaration]
 
+// [START java_declaration]
+option java_package = "ws";
+option java_outer_classname = "NumbersProto";
+// [END java_declaration]
+
+// [START messages]
+
+// send an variable amount of unsigned integers
 message Numbers{
   repeated uint64 n;
 }
+
+// [END messages]
