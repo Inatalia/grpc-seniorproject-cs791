@@ -1,0 +1,12 @@
+// this buffer is desinged to test
+// the compression of numbers using the default
+// scheme (variable integer size)
+
+// note if proto2 n would need to be specified as packed
+// proto3 uses packing by default
+
+syntax = "proto3";
+
+message Numbers{
+  repeated uint64 n;
+}
