@@ -20,6 +20,7 @@ option java_outer_classname = "BookProto";
 // send a book as a string
 message Book{
   bytes d = 1;
+  string fname = 2;
 }
 
 // [END messages]
