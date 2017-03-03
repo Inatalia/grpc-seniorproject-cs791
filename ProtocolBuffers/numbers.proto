@@ -8,6 +8,7 @@
 // [START declaration]
 syntax = "proto3";
 package unh.cs;
+option optimize_for = LITE_RUNTIME;
 // [END declaration]
 
 // [START java_declaration]
@@ -19,7 +20,7 @@ option java_outer_classname = "NumbersProto";
 
 // send an variable amount of unsigned integers
 message Numbers{
-  repeated uint64 n;
+  repeated uint64 n = 1;
 }
 
 // [END messages]
