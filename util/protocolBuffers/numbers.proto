@@ -16,11 +16,24 @@ option java_package = "ws";
 option java_outer_classname = "NumbersProto";
 // [END java_declaration]
 
+// [START services]
+
+service Sender {
+  rpc SendNumbers (Numbers) returns (Confirmation) {}
+}
+
+// [END services]
+
 // [START messages]
 
-// send an variable amount of unsigned integers
+// send a variable amount of unsigned integers
 message Numbers{
   repeated uint64 n = 1;
+}
+
+// send a confirmation to the client
+message Confirmation{
+  string message = 1;
 }
 
 // [END messages]
