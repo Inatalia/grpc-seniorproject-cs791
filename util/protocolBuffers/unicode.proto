@@ -26,7 +26,7 @@ service Sender {
 // [START messages]
 
 message Unicode {
-  repeated string n = 1;
+  string n = 1;
 }
 
 // send a confirmation to the client
