@@ -1,0 +1,37 @@
+// this buffer is desinged to test
+// the compression of numbers using the default
+
+// note if proto2 n would need to be specified as packed
+// proto3 uses packing by default
+
+// [START declaration]
+syntax = "proto3";
+package unh.cs;
+option optimize_for = LITE_RUNTIME;
+// [END declaration]
+
+// [START java_declaration]
+option java_package = "ws";
+option java_outer_classname = "UnicodeProto";
+// [END java_declaration]
+
+// [START services]
+
+service Sender {
+  rpc SendUnicode (Unicode) returns (Confirmation) {}
+}
+
+// [END services]
+
+// [START messages]
+
+message Unicode {
+  repeated string n = 1;
+}
+
+// send a confirmation to the client
+message Confirmation{
+  string message = 1;
+}
+
+// [END messages]
