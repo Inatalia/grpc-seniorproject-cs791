@@ -6,14 +6,14 @@
 
 #define NUM 1000
 
-#define FROM_MASK_ONE_BYTE 0x0
+#define FROM_MASK_ONE_BYTE 0x00
 #define TO_MASK_ONE_BYTE 0x7F
 #define FROM_MASK_TWO_BYTE 0x80
 #define TO_MASK_TWO_BYTE 0x7FF
 #define FROM_MASK_THREE_BYTE 0x0800
 #define TO_MASK_THREE_BYTE 0xFFFF
 #define FROM_MASK_FOUR_BYTE 0x10000
-#define TO_MASK_FOUR_BYTE 0x1FFFFF
+#define TO_MASK_FOUR_BYTE 0x1000FF
 
 void generate_unicode_onebyte(uint64_t from, uint64_t to, char * filename);
 void generate_unicode_twobyte(uint64_t from, uint64_t to, char * filename);
@@ -51,7 +51,6 @@ void generate_unicode_twobyte(uint64_t from, uint64_t to, char * filename){
   strcat(fn1,".unicode");
   FILE * fp = fopen(fn1, "w");
   for(int idx = from; idx <= to; ++idx){
-    fputc(idx,fp); 
     int temp = idx;
     int byte1 = (temp >> 6) | 0xC0;
     int byte2 = (temp & 0x003F) | 0x80;
@@ -67,7 +66,6 @@ void generate_unicode_threebyte(uint64_t from, uint64_t to, char * filename){
   strcat(fn1,".unicode");
   FILE * fp = fopen(fn1, "w");
   for(int idx = from; idx <= to; ++idx){
-    //fputc(idx,fp);
     int temp = idx;
     int byte1 = (temp >> 12) | 0xE0;
     int byte2 = ((temp >> 6) & 0x003F) | 0x80;
@@ -85,7 +83,6 @@ void generate_unicode_fourbyte(uint64_t from, uint64_t to, char * filename){
   strcat(fn1,".unicode");
   FILE * fp = fopen(fn1, "w");
   for(int idx = from; idx <= to; ++idx){
-    //fputc(idx,fp); 
     int temp = idx;
     int byte1 = (temp >> 18) | 0xF0;
     int byte2 = ((temp >> 12) & 0x003F) | 0x80;

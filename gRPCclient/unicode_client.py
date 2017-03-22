@@ -1,13 +1,16 @@
 from __future__ import print_function
+# encoding=utf8
 import sys
 import grpc
 import unicode_pb2
 import unicode_pb2_grpc
 
+
 def run():
   _unicode = ''
   for l in open(sys.argv[1],'r'):
-    _unicode = _unicode + unicode(l)
+    _unicode = _unicode + unicode(l, 'utf-8')
+    
   channel = grpc.insecure_channel('localhost:50051')
   stub = unicode_pb2_grpc.SenderStub(channel)
   response = stub.SendUnicode(unicode_pb2.Unicode(n=_unicode))
