@@ -54,7 +54,9 @@ generate_random_uint64(uint64_t mask, char * filename){
     randy = randy << 32;
     randy = (randy | rand()) & mask;
     fprintf(fp, "%llu\n", randy);
-    fprintf(fp2, "\"i%d\" = %llu\n", idx, randy);
+    char f = ',';
+    if( idx == NUM - 1 ) f = ' ';
+    fprintf(fp2, "\"i%d\" : %llu%c\n", idx, randy, f);
   }
   fprintf(fp2, "%s", "}}\n");
   fclose(fp);
